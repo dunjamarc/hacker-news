@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Story from './Story';
 //import Comment from './Comment';
-import storyService from '../../services/storyService'; 
+import storyData from '../../services/StoryService'; 
 
 class HomePage extends Component {
 
@@ -13,7 +13,7 @@ class HomePage extends Component {
     }
 
     componentDidMount() {
-        storyService.topStories()
+        storyData.getTopStories()
             .then(data => {
                 this.setState({
                     topStories: data
