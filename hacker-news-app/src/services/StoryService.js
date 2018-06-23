@@ -19,7 +19,7 @@ class StoryService {
                 }
             })
             .then((response) => {
-                return response.slice(0, 50);
+                return response.slice(0, 30);
             })
     }
 
