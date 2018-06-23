@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Story = (props) => {
+console.log(3);
 
     return (
         <div className="story">
