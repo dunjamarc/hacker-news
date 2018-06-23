@@ -13,10 +13,22 @@ class HomePage extends Component {
     }
 
     componentDidMount() {
+        let topIDs = [];
+
         storyData.getTopStories()
             .then(data => {
-                this.setState({
-                    topStories: data
+                topIDs = data;
+            })
+            .then(() => {
+                let stories = [];
+                topIDs.map(el => {
+                    storyData.getStory(el)
+                        .then(data => {
+                            stories.push(data)
+                            this.setState({
+                                topStories: stories
+                            })
+                        })
                 })
             })
     }
@@ -26,8 +38,7 @@ class HomePage extends Component {
             <main>
                 <div className="container">
                     {this.state.topStories.map(el => {
-                        console.log(el);
-                        
+                        return <Story value={el} key={el.id} />
                     })}
                 </div>
             </main>
