@@ -33,7 +33,7 @@ main {
     margin: 10px 0;
     padding: 7px;
     background-color: white;
-    a {
+    a.title {
         text-decoration: none;
         color: $main-color;
         font-weight: 700;
@@ -43,6 +43,11 @@ main {
         font-size: 14px;
         margin-left: 5px;
         display: inline-block;
+        a {
+            text-decoration: none;
+            font-weight: 700;
+            color: #111;
+        }
     }
     .all-comments {
         border-top: 1px solid rgb(177, 176, 176);
@@ -55,6 +60,9 @@ main {
                 font-weight: 700;
                 display: block;
             }
+        }
+        &.show {
+            display: block;
         }
     }
 }

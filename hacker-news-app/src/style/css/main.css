@@ -24,7 +24,7 @@ main {
   margin: 10px 0;
   padding: 7px;
   background-color: white; }
-  .story a {
+  .story a.title {
     text-decoration: none;
     color: #ff6600;
     font-weight: 700;
@@ -33,6 +33,10 @@ main {
     font-size: 14px;
     margin-left: 5px;
     display: inline-block; }
+    .story p a {
+      text-decoration: none;
+      font-weight: 700;
+      color: #111; }
   .story .all-comments {
     border-top: 1px solid #b1b0b0;
     margin-top: 10px;
@@ -43,5 +47,7 @@ main {
       .story .all-comments .comment p:first-of-type {
         font-weight: 700;
         display: block; }
+    .story .all-comments.show {
+      display: block; }
 
 /*# sourceMappingURL=main.css.map */

@@ -10,7 +10,7 @@ const Comment = (props) => {
 
     return (
         <div className="comment">
-            <span>{props.value.by}</span>
+            <p>{props.value.by}</p>
             <p>{strip(props.value.text)}</p>
         </div>
     )
