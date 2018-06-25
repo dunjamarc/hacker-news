@@ -44,4 +44,17 @@ main {
         margin-left: 5px;
         display: inline-block;
     }
+    .all-comments {
+        border-top: 1px solid rgb(177, 176, 176);
+        margin-top: 10px;
+        display: none;
+        .comment {
+            padding-top: 10px;
+            color: rgb(102, 101, 101);
+            p:first-of-type {
+                font-weight: 700;
+                display: block;
+            }
+        }
+    }
 }
