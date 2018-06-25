@@ -11,6 +11,14 @@ $text-weight: 700;
     padding: 0;
 }
 
+#root, html, body, main {
+    height: 100%;
+}
+
+h2 {
+    text-align: center;
+}
+
 header {
     padding: 15px 0;
     text-align: center;

@@ -8,7 +8,8 @@ class Story extends Component {
         super(props);
         this.state = {
             allComments: [],
-            show: ''
+            show: '',
+            load: true
         };
     }
 
@@ -35,7 +36,8 @@ class Story extends Component {
                 .then(data => {
                     comments.push(data)
                     this.setState({
-                        allComments: comments
+                        allComments: comments,
+                        load: false
                     })
                 })
         })
@@ -51,11 +53,12 @@ class Story extends Component {
                 <a className="title" href={this.props.value.url} target="_blank">{this.props.value.title}</a>
                 <p>- by {this.props.value.by}</p>
                 <p>- score {this.props.value.score}</p>
-                <p>- <input type="button" disabled={this.props.value.kids === undefined ? 'disabled' : ''} onClick={this.fetchComments} value={this.numComments()}/></p>
+                <p>- <input type="button" disabled={this.props.value.kids === undefined ? 'disabled' : ''} onClick={this.fetchComments} value={this.numComments()} /></p>
                 <div className={`all-comments ${this.state.show}`}>
-                    {this.state.allComments.map(el => {
-                        return <Comment value={el} key={el.id} />
-                    })}
+                    {this.state.load ? <p>Loading...</p> :
+                        this.state.allComments.map(el => {
+                            return <Comment value={el} key={el.id} />
+                        })}
                 </div>
             </div>
 
