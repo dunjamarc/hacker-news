@@ -8,7 +8,8 @@ class HomePage extends Component {
         super(props);
         this.state = {
             topStories: [],
-            load: true
+            load: true,
+            error: false
         };
     }
 
@@ -22,7 +23,7 @@ class HomePage extends Component {
             .then(() => {
                 let stories = [];
                 topIDs.map(el => {
-                    storyData.getStory(el)
+                    return storyData.getStory(el)
                         .then(data => {
                             stories.push(data)
                             this.setState({
@@ -32,12 +33,18 @@ class HomePage extends Component {
                         })
                 })
             })
+            .catch(error => {
+                this.setState({
+                    error: error.message
+                })
+            })
     }
 
     render() {
         return (
             <main>
-                {this.state.load ? <h2>Loading...</h2> : 
+                {this.state.error ? <p className="error">{this.state.error}</p> :
+                this.state.load ? <h2>Loading...</h2> : 
                 <div className="container">
                     {this.state.topStories.map(el => {
                         return <Story value={el} key={el.id} />

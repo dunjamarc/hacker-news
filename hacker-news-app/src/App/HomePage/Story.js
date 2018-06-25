@@ -32,7 +32,7 @@ class Story extends Component {
         let comments = [];
 
         commentIDs.map(el => {
-            commentData.getComment(el)
+            return commentData.getComment(el)
                 .then(data => {
                     comments.push(data)
                     this.setState({
