@@ -22,28 +22,46 @@ main {
 .story {
   box-shadow: 0 0 5px #111;
   margin: 10px 0;
-  padding: 7px;
+  padding: 7px 7px 0 7px;
   background-color: white; }
   .story a.title {
     text-decoration: none;
     color: #ff6600;
     font-weight: 700;
-    display: block; }
+    display: block;
+    margin-bottom: 3px; }
   .story p {
     font-size: 14px;
     margin-left: 5px;
     display: inline-block; }
+  .story input {
+    background-color: white;
+    border: 1px solid #b1b0b0;
+    border-radius: 3px;
+    padding: 0 3px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    cursor: pointer; }
+    .story input:focus {
+      outline: none; }
   .story .all-comments {
-    border-top: 1px solid #b1b0b0;
-    margin-top: 10px;
-    display: none; }
+    box-sizing: border-box;
+    border-top: 0px solid #b1b0b0;
+    max-height: 0;
+    overflow: hidden;
+    -webkit-transition: max-height .7s, border-top;
+    transition: max-height .7s, border-top; }
     .story .all-comments .comment {
       padding-top: 10px;
       color: #666565; }
       .story .all-comments .comment p:first-of-type {
         font-weight: 700;
         display: block; }
+      .story .all-comments .comment:last-of-type {
+        padding-bottom: 10px; }
     .story .all-comments.show {
-      display: block; }
+      max-height: 2000px;
+      border-top: 1px solid #b1b0b0; }
 
 /*# sourceMappingURL=main.css.map */
