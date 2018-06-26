@@ -18,7 +18,7 @@ $text-weight: 700;
 header {
     padding: 15px 0;
     text-align: center;
-    box-shadow: 0px 15px 10px -15px #111;
+    box-shadow: 0px -1px 31px -4px rgba(0,0,0,0.75);
     h1 {
         color: $main-color;
     }
@@ -40,14 +40,14 @@ main {
 }
 
 .story {
-    box-shadow: 0 0 5px #111;
+    box-shadow: 0px 0px 15px -4px rgba(0,0,0,0.75);
     margin: 10px 0;
     padding: 7px 7px 0 7px;
     background-color: white;
     a.title {
         text-decoration: none;
         color: $main-color;
-        font-weight: $text-weight;
+        font-size: 18px;
         display: block;
         margin-bottom: 3px;
     }
