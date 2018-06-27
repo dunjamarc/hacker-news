@@ -7,7 +7,7 @@ class HomePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            topStories: [],
+            topNewStories: [],
             load: true,
             error: false,
             allStories: "newstories"
@@ -30,7 +30,7 @@ class HomePage extends Component {
                         .then(data => {
                             stories.push(data)
                             this.setState({
-                                topStories: stories,
+                                topNewStories: stories,
                                 load: false,
                                 allStories: query
                             })
@@ -59,7 +59,7 @@ class HomePage extends Component {
                 {this.state.error ? <p className="error">{this.state.error}</p> :
                 this.state.load ? <h2>Loading...</h2> : 
                 <div className="container">
-                    {this.state.topStories.map(el => {
+                    {this.state.topNewStories.map(el => {
                         return <Story value={el} key={el.id} />
                     })}
                 </div>}

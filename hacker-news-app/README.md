@@ -2,7 +2,7 @@
 
 > Web app displaying a list of top/new stories with the title, author, number of comments and score. Every title is the link to the original story.
 
-API used for the app:
+The app is written in React library and using provided API:
 
 [https://github.com/HackerNews/API]
 
