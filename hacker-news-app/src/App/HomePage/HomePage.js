@@ -18,7 +18,6 @@ class HomePage extends Component {
         let topIDs = [];
         let query;
         this.state.allStories === "newstories" ? query = "topstories" : query = "newstories";
-        console.log(this.state.allStories);
         
         storyData.getTopStories(query)
             .then(data => {
@@ -56,7 +55,7 @@ class HomePage extends Component {
     render() {
         return (
             <main>
-                <a onClick={this.changeStories}>{this.state.allStories === "newstories" ? "Top Stories" : "New Stories"}</a>
+                <a id="toggle-stories" onClick={this.changeStories}>{this.state.allStories === "newstories" ? "Top Stories" : "New Stories"}</a>
                 {this.state.error ? <p className="error">{this.state.error}</p> :
                 this.state.load ? <h2>Loading...</h2> : 
                 <div className="container">
