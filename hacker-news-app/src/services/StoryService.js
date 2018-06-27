@@ -18,9 +18,6 @@ class StoryService {
                     throw new Error('SOMETHING WENT WRONG :(');
                 }
             })
-            .then((response) => {
-                return response.slice(0, 30);
-            })
     }
 
 }

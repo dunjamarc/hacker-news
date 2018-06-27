@@ -12,16 +12,15 @@ class HomePage extends Component {
             error: false,
             allStories: "newstories"
         };
+        this.counter = 1;
     }
 
-    fetchData = () => {
+    fetchData = (query) => {
         let topIDs = [];
-        let query;
-        this.state.allStories === "newstories" ? query = "topstories" : query = "newstories";
-        
+
         storyData.getTopStories(query)
             .then(data => {
-                topIDs = data;
+                topIDs = data.slice(0, 20 * this.counter);
             })
             .then(() => {
                 let stories = [];
@@ -45,11 +44,20 @@ class HomePage extends Component {
     }
 
     componentDidMount() {
-        this.fetchData();
+        let query;
+        this.state.allStories === "newstories" ? query = "topstories" : query = "newstories";
+        this.fetchData(query);
     }
 
     changeStories = (event) => {
-        this.fetchData();
+        let query;
+        this.state.allStories === "newstories" ? query = "topstories" : query = "newstories";
+        this.fetchData(query);
+    }
+
+    loadMore = (event) => {
+        this.counter++;
+        this.fetchData(this.state.allStories);
     }
 
     render() {
@@ -62,6 +70,7 @@ class HomePage extends Component {
                     {this.state.topNewStories.map(el => {
                         return <Story value={el} key={el.id} />
                     })}
+                    <a id="load" onClick={this.loadMore}>More</a>
                 </div>}
             </main>
         );

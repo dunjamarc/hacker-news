@@ -46,6 +46,9 @@ main {
     h2, .error {
         text-align: center;
     }
+    #load {
+        @extend #toggle-stories;
+    }
 }
 
 .container {

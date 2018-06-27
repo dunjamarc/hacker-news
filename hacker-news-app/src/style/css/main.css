@@ -19,7 +19,7 @@ main {
   padding: 30px 0;
   min-height: 100%;
   height: auto; }
-  main #toggle-stories {
+  main #toggle-stories, main #load {
     cursor: pointer;
     border: 1px solid #ff6600;
     display: block;
@@ -29,7 +29,7 @@ main {
     background-color: white;
     border-radius: 3px;
     position: relative; }
-    main #toggle-stories:active {
+    main #toggle-stories:active, main #load:active {
       top: 2px; }
   main h2, main .error {
     text-align: center; }
