@@ -9,8 +9,8 @@ class StoryService {
         .then(data => new Story(data))
     }
 
-    getTopStories() {
-        return fetch('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty')
+    getTopStories(query) {
+        return fetch(`https://hacker-news.firebaseio.com/v0/${query}.json?print=pretty`)
             .then((response) => {
                 if (response.ok) {
                     return response.json();

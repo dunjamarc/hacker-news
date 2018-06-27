@@ -9,14 +9,18 @@ class HomePage extends Component {
         this.state = {
             topStories: [],
             load: true,
-            error: false
+            error: false,
+            allStories: "newstories"
         };
     }
 
-    componentDidMount() {
+    fetchData = () => {
         let topIDs = [];
-
-        storyData.getTopStories()
+        let query;
+        this.state.allStories === "newstories" ? query = "topstories" : query = "newstories";
+        console.log(this.state.allStories);
+        
+        storyData.getTopStories(query)
             .then(data => {
                 topIDs = data;
             })
@@ -28,7 +32,8 @@ class HomePage extends Component {
                             stories.push(data)
                             this.setState({
                                 topStories: stories,
-                                load: false
+                                load: false,
+                                allStories: query
                             })
                         })
                 })
@@ -40,9 +45,18 @@ class HomePage extends Component {
             })
     }
 
+    componentDidMount() {
+        this.fetchData();
+    }
+
+    changeStories = (event) => {
+        this.fetchData();
+    }
+
     render() {
         return (
             <main>
+                <a onClick={this.changeStories}>{this.state.allStories === "newstories" ? "Top Stories" : "New Stories"}</a>
                 {this.state.error ? <p className="error">{this.state.error}</p> :
                 this.state.load ? <h2>Loading...</h2> : 
                 <div className="container">
