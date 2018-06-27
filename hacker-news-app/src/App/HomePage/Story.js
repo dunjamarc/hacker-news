@@ -35,9 +35,7 @@ class Story extends Component {
         if (!this.state.clicked) {
             commentIDs.map(el => {
                 return commentData.getComment(el)
-                    .then(data => {
-                        console.log(1);
-                        
+                    .then(data => {                        
                         comments.push(data)
                         this.setState({
                             allComments: comments,
@@ -55,6 +53,10 @@ class Story extends Component {
         this.setState({ show: className });
     }
 
+    closeComments = (event) => {
+        this.setState({ show: ""});
+    }
+
     render() {
         return (
             <div className="story">
@@ -67,6 +69,7 @@ class Story extends Component {
                         this.state.allComments.map(el => {
                             return <Comment value={el} key={el.id} />
                         })}
+                    <a onClick={this.closeComments}><i className="fa fa-angle-up"></i></a>
                 </div>
             </div>
 

@@ -87,6 +87,15 @@ main {
                 padding-bottom: 10px;
             }
         }
+        a {
+            display: block;
+            text-align: center;
+            cursor: pointer;
+            i{
+                font-size: 25px;
+                color: rgb(85, 83, 83);
+            }
+        }
         &.show {
             max-height: 100%;
             border-top: 1px solid $border-color;

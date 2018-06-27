@@ -67,6 +67,13 @@ main {
         display: block; }
       .story .all-comments .comment:last-of-type {
         padding-bottom: 10px; }
+    .story .all-comments a {
+      display: block;
+      text-align: center;
+      cursor: pointer; }
+      .story .all-comments a i {
+        font-size: 25px;
+        color: #555353; }
     .story .all-comments.show {
       max-height: 100%;
       border-top: 1px solid #b1b0b0; }
