@@ -2,6 +2,10 @@
 
 > Web app displaying a list of top/new stories with the title, author, number of comments and score. Every title is the link to the original story.
 
+API used for the app:
+
+[https://github.com/HackerNews/API]
+
 ## Project structure
 
 * App - Components

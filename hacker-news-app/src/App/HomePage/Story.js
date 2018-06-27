@@ -9,7 +9,8 @@ class Story extends Component {
         this.state = {
             allComments: [],
             show: '',
-            load: true
+            load: true,
+            clicked: false
         };
     }
 
@@ -31,16 +32,23 @@ class Story extends Component {
             : commentIDs = this.props.value.kids;
         let comments = [];
 
-        commentIDs.map(el => {
-            return commentData.getComment(el)
-                .then(data => {
-                    comments.push(data)
-                    this.setState({
-                        allComments: comments,
-                        load: false
+        if (!this.state.clicked) {
+            commentIDs.map(el => {
+                return commentData.getComment(el)
+                    .then(data => {
+                        console.log(1);
+                        
+                        comments.push(data)
+                        this.setState({
+                            allComments: comments,
+                            load: false
+                        })
                     })
-                })
-        })
+            })
+            this.setState({
+                clicked: true
+            })
+        }
 
         //toggle class
         let className = this.state.show === "" ? "show" : "";
