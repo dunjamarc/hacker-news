@@ -8,7 +8,9 @@ class Story extends Component {
         super(props);
         this.state = {
             allComments: [],
-            show: ''
+            show: '',
+            load: true,
+            clicked: false
         };
     }
 
@@ -30,19 +32,29 @@ class Story extends Component {
             : commentIDs = this.props.value.kids;
         let comments = [];
 
-        commentIDs.map(el => {
-            commentData.getComment(el)
-                .then(data => {
-                    comments.push(data)
-                    this.setState({
-                        allComments: comments
+        if (!this.state.clicked) {
+            commentIDs.map(el => {
+                return commentData.getComment(el)
+                    .then(data => {                        
+                        comments.push(data)
+                        this.setState({
+                            allComments: comments,
+                            load: false
+                        })
                     })
-                })
-        })
+            })
+            this.setState({
+                clicked: true
+            })
+        }
 
         //toggle class
         let className = this.state.show === "" ? "show" : "";
         this.setState({ show: className });
+    }
+
+    closeComments = (event) => {
+        this.setState({ show: ""});
     }
 
     render() {
@@ -51,11 +63,13 @@ class Story extends Component {
                 <a className="title" href={this.props.value.url} target="_blank">{this.props.value.title}</a>
                 <p>- by {this.props.value.by}</p>
                 <p>- score {this.props.value.score}</p>
-                <p>- <input type="button" disabled={this.props.value.kids === undefined ? 'disabled' : ''} onClick={this.fetchComments} value={this.numComments()}/></p>
+                <p>- <input type="button" disabled={this.props.value.kids === undefined ? 'disabled' : ''} onClick={this.fetchComments} value={this.numComments()} /></p>
                 <div className={`all-comments ${this.state.show}`}>
-                    {this.state.allComments.map(el => {
-                        return <Comment value={el} key={el.id} />
-                    })}
+                    {this.state.load ? <p>Loading...</p> :
+                        this.state.allComments.map(el => {
+                            return <Comment value={el} key={el.id} />
+                        })}
+                    <a onClick={this.closeComments}><i className="fa fa-angle-up"></i></a>
                 </div>
             </div>
 
